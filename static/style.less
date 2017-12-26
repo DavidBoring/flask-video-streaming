@@ -10,6 +10,7 @@ body {
 	font-weight: bold;
 	color: @colour1;
 	background-color: @colour2;
+	margin: 0;
 }
 
 a {
@@ -76,11 +77,20 @@ footer {
 	display: block;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
+	
 	nav {
 		justify-content: center;
 		div ul {
 			flex-direction: column;
+		}
+	}
+
+	section {
+		div {
+			img {
+				width: 100%;
+			}
 		}
 	}
 }
