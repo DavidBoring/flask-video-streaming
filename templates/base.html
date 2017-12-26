@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <title>SquirrelCamCologne</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Eine Eichhörnchen-Webcam aus Köln">
+    <meta name="author" content="Christian Busse">
+    <meta name="twitter:card" content="Eine Eichhörnchen-Webcam aus Köln" />
+    <meta name="twitter:title" content="SquirrelCamCologne" />
+    <link rel="icon" href="{{ url_for('static', filename='squirrel.png') }}" type="image/png" sizes="16x16">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100" rel="stylesheet">
+    <link rel='stylesheet' href='{{ url_for('static', filename='style.css') }}' type='text/css'/>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+</head>
+
+<body>
+	<header>
+		<h1>Squirrel&shy;Cam&shy;Cologne</h1>
+	</header>
+	<nav>
+		<div>
+			<ul>
+				<a href="/"><li>Home</li></a>
+				<a href="/impressum"><li>Impressum</li></a>
+			</ul>
+		</div>
+    </nav>     
+    </header>
+    <section>
+    	{% block content %}
+    	{% endblock %}
+	</section>
+    <footer>
+    	<div class="copyright">Copyright &copy; 2017 <span>Christian Busse</span>.</div>
+        <div class="social footer-right">
+        	<a href="https://twitter.com/davidboring" title="Check me out on Twitter"><i class="fab fa-twitter"></i>
+        	</a>
+        </div>
+    </footer>
+</body>
+</html>

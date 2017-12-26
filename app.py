@@ -13,13 +13,12 @@ else:
 # from camera_pi import Camera
 
 app = Flask(__name__)
-
+print(Camera)
 
 @app.route('/')
 def index():
     """Video streaming home page."""
     return render_template('index.html')
-
 
 def gen(camera):
     """Video streaming generator function."""
@@ -28,6 +27,9 @@ def gen(camera):
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
+@app.route('/impressum')
+def impressum():
+    return render_template('impressum.html',)
 
 @app.route('/video_feed')
 def video_feed():
@@ -35,6 +37,7 @@ def video_feed():
     return Response(gen(Camera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
-
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', threaded=True)
+    app.run(host='192.168.178.34', threaded=True, debug=True)
+    # app.run(host='0.0.0.0', threaded=True, debug=True)
+    # app.run(host='192.168.178.52', port=5000, debug=True, threaded=True)
