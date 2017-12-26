@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 from importlib import import_module
-import os
 from flask import Flask, render_template, Response
+import os
+import hostconfig
 
 # import camera driver
 if os.environ.get('CAMERA'):
     Camera = import_module('camera_' + os.environ['CAMERA']).Camera
 else:
-    from camera import Camera
+    # from camera import Camera
+    from camera_pi import Camera
 
 # Raspberry Pi camera module (requires picamera package)
 # from camera_pi import Camera
@@ -38,6 +40,4 @@ def video_feed():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-    app.run(host='192.168.178.34', threaded=True, debug=True)
-    # app.run(host='0.0.0.0', threaded=True, debug=True)
-    # app.run(host='192.168.178.52', port=5000, debug=True, threaded=True)
+    app.run(host=hostconfig.host, debug=hostconfig.debug, threaded=True)
